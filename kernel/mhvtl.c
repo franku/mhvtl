@@ -336,7 +336,9 @@ static struct scsi_host_template vtl_driver_template = {
 #endif
 	.module =		THIS_MODULE,
 };
-
+#if ! defined(HAVE_UNLOCKED_IOCTL)
+# define HAVE_UNLOCKED_IOCTL
+#endif
 static const struct file_operations vtl_fops = {
 	.owner		= THIS_MODULE,
 #if defined(HAVE_UNLOCKED_IOCTL)
